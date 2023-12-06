@@ -7,7 +7,16 @@ Original file is located at
     https://colab.research.google.com/drive/1b8iaoQhv07Rq0mXmBXDs7NerEhVWNnB0
 """
 
-!wget https://storage.googleapis.com/tensorflow-1-public/course2/week3/horse-or-human.zip
+#!wget https://storage.googleapis.com/tensorflow-1-public/course2/week3/horse-or-human.zip
+
+import requests
+
+url = "https://storage.googleapis.com/tensorflow-1-public/course2/week3/horse-or-human.zip"
+response = requests.get(url)
+
+with open("horse-or-human.zip", "wb") as f:
+    f.write(response.content)
+
 
 import zipfile
 
