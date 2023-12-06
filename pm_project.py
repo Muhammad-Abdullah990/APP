@@ -17,7 +17,32 @@ response = requests.get(url)
 with open("horse-or-human.zip", "wb") as f:
     f.write(response.content)
     
-!chmod 666 ./horse-or-human.zip
+import subprocess
+
+# Attempt to extract the zip file
+try:
+    import zipfile
+    zip_ref = zipfile.ZipFile('./horse-or-human.zip', 'r')
+    zip_ref.extractall('./horse-or-human')
+    zip_ref.close()
+except EOFError as e:
+    print(e)
+    print("Extracting zip file failed. Trying to change permissions...")
+
+    # Change permissions using subprocess
+    try:
+        subprocess.run(['chmod', '666', './horse-or-human.zip'])
+        print("Permissions changed successfully. Retrying zip extraction...")
+
+        # Re-attempt extraction after changing permissions
+        import zipfile
+        zip_ref = zipfile.ZipFile('./horse-or-human.zip', 'r')
+        zip_ref.extractall('./horse-or-human')
+        zip_ref.close()
+    except Exception as e:
+        print("Zip extraction failed even after changing permissions.")
+        print(e)
+
 
 import zipfile
 
