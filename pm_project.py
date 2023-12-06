@@ -9,6 +9,8 @@ Original file is located at
 
 #!wget https://storage.googleapis.com/tensorflow-1-public/course2/week3/horse-or-human.zip
 
+!pip install tensorflow
+
 import requests
 
 url = "https://storage.googleapis.com/tensorflow-1-public/course2/week3/horse-or-human.zip"
@@ -59,8 +61,6 @@ train_horse_dir = os.path.join('./horse-or-human/horses')
 
 # Directory with our training human pictures
 train_human_dir = os.path.join('./horse-or-human/humans')
-
-!pip install tensorflow
 
 import tensorflow as tf
 
