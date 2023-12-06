@@ -16,7 +16,8 @@ response = requests.get(url)
 
 with open("horse-or-human.zip", "wb") as f:
     f.write(response.content)
-
+    
+!chmod 666 ./horse-or-human.zip
 
 import zipfile
 
@@ -33,6 +34,8 @@ train_horse_dir = os.path.join('./horse-or-human/horses')
 
 # Directory with our training human pictures
 train_human_dir = os.path.join('./horse-or-human/humans')
+
+!pip install tensorflow
 
 import tensorflow as tf
 
